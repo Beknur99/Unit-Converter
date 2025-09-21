@@ -1,0 +1,76 @@
+"""
+Unit Converter
+Author: Beknur99
+Version: 1.0
+A simple console-based tool to convert between common units.
+"""
+
+def show_menu():
+    """Display unit conversion options."""
+    print("\n" + "="*35)
+    print("UNIT CONVERTER")
+    print("="*35)
+    print("1. Kilometers → Miles")
+    print("2. Miles → Kilometers")
+    print("3. Celsius → Fahrenheit")
+    print("4. Fahrenheit → Celsius")
+    print("5. Kilograms → Pounds")
+    print("6. Pounds → Kilograms")
+    print("7. Exit Program")
+    print("="*35)
+
+def km_to_miles(km):
+    return km * 0.621371
+
+def miles_to_km(miles):
+    return miles / 0.621371
+
+def c_to_f(c):
+    return (c * 9/5) + 32
+
+def f_to_c(f):
+    return (f - 32) * 5/9
+
+def kg_to_lb(kg):
+    return kg * 2.20462
+
+def lb_to_kg(lb):
+    return lb / 2.20462
+
+def main():
+    """Main program function for the unit converter."""
+    print("="*50)
+    print("Unit Converter")
+    print("="*50)
+
+    while True:
+        show_menu()
+        choice = input("Please select an option (1-7): ").strip()
+
+        if choice == '7':
+            print("Thank you for using the Unit Converter.")
+            break
+
+        try:
+            value = float(input("Enter the value to convert: "))
+        except ValueError:
+            print("Invalid input: Please enter a number.")
+            continue
+
+        if choice == '1':
+            print(f"{value} km = {km_to_miles(value):.2f} miles")
+        elif choice == '2':
+            print(f"{value} miles = {miles_to_km(value):.2f} km")
+        elif choice == '3':
+            print(f"{value}°C = {c_to_f(value):.2f}°F")
+        elif choice == '4':
+            print(f"{value}°F = {f_to_c(value):.2f}°C")
+        elif choice == '5':
+            print(f"{value} kg = {kg_to_lb(value):.2f} lbs")
+        elif choice == '6':
+            print(f"{value} lbs = {lb_to_kg(value):.2f} kg")
+        else:
+            print("Invalid selection: Please choose an option between 1-7.")
+
+if __name__ == "__main__":
+    main()
